@@ -1,14 +1,35 @@
-import { useState } from 'react'
+
+// Filename - App.js
+
+import React, { useState } from "react";
+import CustomVision from "./Components/CustomVision";
 
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [file, setFile] = useState();
+  const [image, setImage] = useState();
+
+  function handleChange(e) {
+    console.log(e.target.files);
+    setImage(e.target.files[0]);
+    setFile(URL.createObjectURL(e.target.files[0]));
+    //sendImageToApi();
+  }
+
+  function handleClick(e) {
+    setImage();
+    setFile();
+  }
+
 
   return (
-    <>
-      <h1>Test</h1>
-    </>
-  )
+    <div className="App">
+      <h2>Add Image:</h2>
+      <input type="file" onChange={handleChange} onClick={handleClick} />
+      <img src={file} />
+      {image && <CustomVision image={image} /> }
+    </div>
+  );
 }
 
-export default App
+export default App;
