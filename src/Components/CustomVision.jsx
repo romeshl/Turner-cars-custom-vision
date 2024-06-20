@@ -11,39 +11,47 @@ export default function CustomVision({ image }) {
     }, [image]);
 
     async function fetcher(url) {
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {
-                "Prediction-Key": "ebd9430dfce643debe391e0384855ebd",
-                "Content-Type": "application/octet-stream",
-            },
-            body: image
-        });
-        const data = await response.json();
-        setShowData(true);
-        return data;
+        if (image) {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Prediction-Key": "ebd9430dfce643debe391e0384855ebd",
+                    "Content-Type": "application/octet-stream",
+                },
+                body: image
+            });
+            const data = await response.json();
+            setShowData(true);
+            const probability = await Object.entries(data)[4][1][0].probability;
+            const vehicle = await Object.entries(data)[4][1][0].tagName.toUpperCase();
+            if (probability > 0.45) {
+                return vehicle;
+            }
+            else {
+                return "Unable to detect the type of vehicle. Please try a different image.";
+            }
+        }
+        else {
+            return "Please upload an image first.";
+        }
 
     }
 
     const { data, error, isLoading } = useSWR(customVisionURL, fetcher);
-    
 
-     //   console.log(Object.entries(data));
-    
-    
     return (
         <>
-            <div className='my-[100px] mx-auto w-[500px] p-[20px] border font-mono'>
+            <div >
                 {isLoading ?
-                    <h1>Loading countries data ...</h1>
+                    <h1>Loading data ...</h1>
                     :
                     error ?
                         <h1>Error occurred while loading data. Error code:</h1>
                         :
                         data ?
                             <div>
-                            
-                                <p>{showData ? Object.entries(data)[4][1][0].tagName.toUpperCase(): "Loading data"}</p>
+
+                                <p>{showData ? data : "Loading data"}</p>
                             </div>
                             :
                             <h1>No data to display.</h1>

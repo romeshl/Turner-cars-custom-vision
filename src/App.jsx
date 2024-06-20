@@ -11,7 +11,6 @@ function App() {
 
   function handleChange(e) {
     if (e.target.files.length > 0) {
-      console.log(e.target.files);
       setImage(e.target.files[0]);
       setFile(URL.createObjectURL(e.target.files[0]));
       //sendImageToApi();
@@ -21,7 +20,9 @@ function App() {
 
   function handleClick(e) {
     setImage();
-    setFile();
+    setFile(null);
+    console.log("Image is");
+    console.log(image);
   }
 
 
