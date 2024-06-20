@@ -1,9 +1,5 @@
-
-// Filename - App.js
-
 import React, { useState } from "react";
 import CustomVision from "./Components/CustomVision";
-
 
 function App() {
   const [file, setFile] = useState();
@@ -13,7 +9,6 @@ function App() {
     if (e.target.files.length > 0) {
       setImage(e.target.files[0]);
       setFile(URL.createObjectURL(e.target.files[0]));
-      //sendImageToApi();
     }
 
   }
@@ -22,7 +17,6 @@ function App() {
     setImage();
     setFile(null);
   }
-
 
   return (
     <div className="font-mono w-[80%] max-w-[1200px] border-2 mx-[auto] rounded-3xl bg-blue-50 border-blue-900 mt-[100px] pt-[50px] p-[30px] gap-xl">
