@@ -21,16 +21,16 @@ function App() {
   function handleClick(e) {
     setImage();
     setFile(null);
-    console.log("Image is");
-    console.log(image);
   }
 
 
   return (
-    <div className="App">
-      <h2>Add Image:</h2>
-      <input type="file" onChange={handleChange} onClick={handleClick} />
-      <img src={file} />
+    <div className="font-mono w-[80%] max-w-[1200px] border-2 mx-[auto] rounded-3xl bg-blue-50 border-blue-900 mt-[100px] pt-[50px] p-[30px] gap-xl">
+      <h1 className="text-blue-800 font-bold text-xl text-center underline mb-[30px]">Turner Car Insurance - Vehicle Type Detector Prototype</h1>
+      <h2 className="font-bold">Add Image:</h2>
+      <input className="text-blue-700 mb-[30px]" type="file" onChange={handleChange} onClick={handleClick} />
+      {image && <img className="w-[80%] mx-auto border-2  border-blue-300 rounded-xl mb-[50px]" src={file} />}
+      
       {image && <CustomVision image={image} /> }
     </div>
   );

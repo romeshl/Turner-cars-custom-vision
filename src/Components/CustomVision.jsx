@@ -25,7 +25,7 @@ export default function CustomVision({ image }) {
             const probability = await Object.entries(data)[4][1][0].probability;
             const vehicle = await Object.entries(data)[4][1][0].tagName.toUpperCase();
             if (probability > 0.45) {
-                return vehicle;
+                return "Vehicle type is: " + vehicle;
             }
             else {
                 return "Unable to detect the type of vehicle. Please try a different image.";
@@ -41,7 +41,7 @@ export default function CustomVision({ image }) {
 
     return (
         <>
-            <div >
+            <div className="w-[80%] mx-auto border-2 text-center text-xl bg-blue-100 p-4 border-blue-300 rounded-xl" >
                 {isLoading ?
                     <h1>Loading data ...</h1>
                     :
@@ -51,7 +51,7 @@ export default function CustomVision({ image }) {
                         data ?
                             <div>
 
-                                <p>{showData ? data : "Loading data"}</p>
+                                <p>{showData ? data : "Loading data ..."}</p>
                             </div>
                             :
                             <h1>No data to display.</h1>
