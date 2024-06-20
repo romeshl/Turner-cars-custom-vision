@@ -46,7 +46,7 @@ export default function CustomVision({ image }) {
                     <h1>Loading data ...</h1>
                     :
                     error ?
-                        <h1>Error occurred while loading data. Error code:</h1>
+                        <h1>Error occurred while loading data.</h1>
                         :
                         data ?
                             <div>
