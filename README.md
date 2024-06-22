@@ -18,8 +18,13 @@
 
 ## Task 3: Familiarise with tool for Task Management
 
+Jira board at the beginning. 
+
 ![screenshot](./Jira-board.png)
 
+Jira board at the end.
+
+![screenshot](./Jira-board-completed.png)
 ## Task 4: Prototype to Showcase AI Solution
 
 For the prototype I trained a model in Azure Custom Vision to identify the type of car.
