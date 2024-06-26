@@ -1,7 +1,7 @@
 import useSWR from 'swr';
 
 export default function CustomVision({ image  }) {
-    const customVisionURL = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/c40f86f9-c0e6-46b5-9535-e3f9c3b0d6ab/classify/iterations/TurnerCars/image";
+    const customVisionURL = import.meta.env.VITE_API_ENDPOINT;
 
     const { data, error, isLoading, isValidating } = useSWR(customVisionURL, fetcher);
 
@@ -11,7 +11,7 @@ export default function CustomVision({ image  }) {
         const response = await fetch(url, {
             method: "POST",
             headers: {
-                "Prediction-Key": "ebd9430dfce643debe391e0384855ebd",
+                "Prediction-Key": import.meta.env.VITE_PRODUCTION_KEY,
                 "Content-Type": "application/octet-stream",
             },
             body: image
