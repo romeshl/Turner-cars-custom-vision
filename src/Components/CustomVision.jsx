@@ -39,7 +39,6 @@ export default function CustomVision({ image }) {
         }
     }
 
-    console.log(import.meta.env.VITE_API_ENDPOINT, import.meta.env.VITE_PRODUCTION_KEY);
     // Rendering the component UI
     return (
         <>
