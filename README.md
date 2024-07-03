@@ -1,3 +1,43 @@
+# Intro
+
+This is a project I did as the Mission-1 for my Advanced Full-stack developer course at Mission Ready HQ. 
+
+Objective of the project was to create a prototype for an insurance compnay to identify the type of the vehicle by uploading a photo.
+
+After a bit of research I decided to use [Azure Custom Vision](https://www.customvision.ai/) as the AI Vision for the project.
+
+I trained the model with [these images](https://1drv.ms/f/s!AvMZq0VwTfAXpfRz5ovMfPPDYiQJVw?e=0aVMMV) with each respective folder name as the tag.
+
+The Web App should be able to detect the type of the Vehicle if it's a Hatchback, Pickup-truck, Sedan, or an Suv. (These were the vehicle types I trained the model with)
+
+As I was running out of time I decided to use the *Custom Vision Endpoint* with a *Production-key* to access the Custom Vision API. 
+
+By clicking *Choose File* and selecting a file in your local drive. You'll be able to get a reading as to what type of vehicle it is. You can check the web app at the link below. 
+
+### Deployed web page
+[Turner-cars-custom-vision](https://brave-cliff-083d5a000.5.azurestaticapps.net/)
+
+## Built with 
+- [React Vite](https://vitejs.dev/)
+- [TailWind CSS](https://tailwindcss.com/)
+
+### Other Tools
+- [Azure Custom Vision](https://www.customvision.ai/)
+
+## Instructions
+
+Use the following command to clone the repository. 
+
+```
+git clone https://github.com/romeshl/Turner-cars-custom-vision
+```
+and then the following command to install dependencies. 
+
+```
+npm install
+```
+
+
 # Mission Ready HQ - Mission 1
 
 ## Task 1: Identify Stakeholders
