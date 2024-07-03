@@ -15,7 +15,7 @@ export default function CustomVision({ image }) {
     async function fetcher(url) {
         // Making a POST request to the custom vision API
         const response = await fetch(url, {
-            method: "POST",
+            method: "POST", 
             headers: {
                 // Using Prediction-Key from environment variables for authentication
                 "Prediction-Key": import.meta.env.VITE_PRODUCTION_KEY,
@@ -24,11 +24,13 @@ export default function CustomVision({ image }) {
             },
             body: image // Sending the image as the request body
         });
+        console.log(image);
         // Parsing the JSON response from the API
         const data = await response.json();
+        console.log(data);
         // Extracting the probability and vehicle type from the response
-        const probability = await Object.entries(data)[4][1][0].probability;
-        const vehicle = await Object.entries(data)[4][1][0].tagName.toUpperCase();
+        const probability = Object.entries(data)[4][1][0].probability;
+        const vehicle = Object.entries(data)[4][1][0].tagName.toUpperCase();
         // Checking if the probability is greater than a threshold to ensure accuracy
         if (probability > PREDICTION_THRESHOLD) {
             // Returning the vehicle type if the probability is high enough

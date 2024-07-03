@@ -1,6 +1,8 @@
 // Importing necessary React hooks and CustomVision component
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CustomVision from "./Components/CustomVision";
+
+import icon from "./assets/ai.jpg";
 
 // Main App component
 function App() {
@@ -8,6 +10,20 @@ function App() {
   const [file, setFile] = useState();
   // State for storing the selected image file
   const [image, setImage] = useState();
+  // State for controlling the display of the CustomVision component and image
+  const [showImage, setShowImage] = useState(false);
+  
+  // Setting the favicon and title of the application
+  useEffect(() => {
+    let link = document.querySelector("link[rel~='icon']");
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    }
+    link.href = icon;
+    document.title = "Turner Car Insurance - Vehicle Type Detector Prototype";
+  }, []);
 
   // Handles file selection and updates state with the file and its URL
   const handleChange = (e) => {
@@ -17,13 +33,17 @@ function App() {
       setImage(e.target.files[0]);
       // Create and set the URL for the selected file for displaying the image
       setFile(URL.createObjectURL(e.target.files[0]));
+      // Display the CustomVision component and img holding the image
+      setShowImage(true);
     }
   }
 
-  // Resets the image and file states, effectively clearing the selection
+  // Hides the CustomVision component and img holding the image
   function handleClick(e) {
-    setImage(null);
-    setFile(null);
+    // Clears the input field value
+    e.target.value = null;
+    // Hides the CustomVision component and img holding the image
+    setShowImage(false);
   }
 
   // Rendering the UI of the App component
@@ -35,9 +55,9 @@ function App() {
       <h2 className="font-bold">Add Image:</h2>
       <input className="text-blue-700 mb-[30px]" type="file" onChange={handleChange} onClick={handleClick} />
       {/* Display the selected image if any */}
-      {image && <img className="w-[80%] mx-auto border-2  border-blue-300 rounded-xl mb-[50px]" src={file} />}
+      {showImage && <img className="w-[80%] mx-auto border-2  border-blue-300 rounded-xl mb-[50px]" src={file} />}
       {/* Invoke the CustomVision component with the selected image if any */}
-      {image && <CustomVision image={image} />}
+      {showImage && <CustomVision image={image} />}
     </div>
   );
 }
