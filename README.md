@@ -14,9 +14,6 @@ As I was running out of time I decided to use the *Custom Vision Endpoint* with 
 
 By clicking *Choose File* and selecting a file in your local drive. You'll be able to get a reading as to what type of vehicle it is. You can check the web app at the link below. 
 
-### Deployed web page
-[Turner-cars-custom-vision](https://brave-cliff-083d5a000.5.azurestaticapps.net/)
-
 ## Built with 
 - [React Vite](https://vitejs.dev/)
 - [TailWind CSS](https://tailwindcss.com/)
@@ -31,12 +28,21 @@ Use the following command to clone the repository.
 ```
 git clone https://github.com/romeshl/Turner-cars-custom-vision
 ```
+You will need to create a .env file in the root folder containing the following information. You obtain them by signing up with Azure from the above link.
+
+```
+VITE_PRODUCTION_KEY=<Your key>
+VITE_API_ENDPOINT=<Your end point>
+```
 and then the following command to install dependencies. 
 
 ```
 npm install
 ```
-
+and finally, following command to run the app.
+```
+npm run dev
+```
 
 # Mission Ready HQ - Mission 1
 
